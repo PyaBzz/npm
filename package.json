@@ -1,0 +1,15 @@
+{
+  "name": "bazjs",
+  "version": "1.0.3",
+  "description": "baz library",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/PyaBzz/npm"
+  },
+  "author": "",
+  "license": "ISC"
+}

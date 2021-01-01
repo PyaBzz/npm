@@ -1,0 +1,63 @@
+:root {
+  --crosshair-movement-time: 0.2s;
+}
+
+.ch-target { position: relative; }
+
+.ch-corners {
+  position: absolute;
+  width: var(--corner-percentage);
+  height: var(--corner-percentage);
+  transition-duration: var(--crosshair-movement-time);
+  transition-timing-function: linear;
+  border-color: transparent;
+  border-width: 2px;
+}
+
+.ch-corner-top-left {
+  border-style: solid none none solid;
+  top: calc(50% - var(--corner-percentage));
+  left: calc(50% - var(--corner-percentage));
+}
+
+.ch-corner-top-right {
+  border-style: solid solid none none;
+  top: calc(50% - var(--corner-percentage));
+  right: calc(50% - var(--corner-percentage));
+}
+
+.ch-corner-bottom-left {
+  border-style: none none solid solid;
+  bottom: calc(50% - var(--corner-percentage));
+  left: calc(50% - var(--corner-percentage));
+}
+
+.ch-corner-bottom-right {
+  border-style: none solid solid none;
+  bottom: calc(50% - var(--corner-percentage));
+  right: calc(50% - var(--corner-percentage));
+}
+
+.ch-target:hover .ch-corners {
+  border-color: var(--food-colour);
+}
+
+.ch-target:hover .ch-corner-top-left {
+  top: 0;
+  left: 0;
+}
+
+.ch-target:hover .ch-corner-top-right {
+  top: 0;
+  right: 0;
+}
+
+.ch-target:hover .ch-corner-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.ch-target:hover .ch-corner-bottom-right {
+  bottom: 0;
+  right: 0;
+}

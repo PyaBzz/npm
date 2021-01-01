@@ -1,0 +1,26 @@
+.logboard {
+  text-align: left;
+}
+
+.logboard-title {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 10px;
+  color: green;
+}
+
+.logboard-header {
+  font-weight: normal;
+  color: green;
+  padding: 4px;
+}
+/* 
+.logboard-item {
+  font-size: 18px;
+  line-height: 1;
+} */
+
+.logboard-value {
+  color: yellowgreen;
+  font-size: 18px;
+}
