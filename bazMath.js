@@ -10,3 +10,5 @@ class bazMath {
         return Math.sqrt(sumOfSquares);
     }
 }
+
+//Todo: Add Mocha and test cases
