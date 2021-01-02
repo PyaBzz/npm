@@ -11,4 +11,5 @@ class BazMath {
     static sigmoid(x) { return x / (1 + Math.abs(x)) };
 }
 
-module.exports = BazMath;
+if (typeof module !== "undefined")
+    module.exports = BazMath;

@@ -14,4 +14,5 @@ class Random {
     }
 }
 
-module.exports = Random;
+if (typeof module !== "undefined")
+    module.exports = Random;
