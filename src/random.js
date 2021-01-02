@@ -1,4 +1,6 @@
-class Random {
+//Todo: Add tests
+
+module.exports = class Random {
     constructor() {
         throw new Error("Do not instantiate a static class");
     }
