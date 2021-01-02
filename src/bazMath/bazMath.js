@@ -1,4 +1,4 @@
-module.exports = class BazMath {
+class BazMath {
     constructor() {
         throw "Don't instantiate static class BazMath."
     }
@@ -10,3 +10,5 @@ module.exports = class BazMath {
 
     static sigmoid(x) { return x / (1 + Math.abs(x)) };
 }
+
+module.exports = BazMath;

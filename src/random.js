@@ -1,6 +1,6 @@
 //Todo: Add tests
 
-module.exports = class Random {
+class Random {
     constructor() {
         throw new Error("Do not instantiate a static class");
     }
@@ -13,3 +13,5 @@ module.exports = class Random {
         return lower + Math.random() * (upper - lower);
     }
 }
+
+module.exports = Random;
