@@ -1,6 +1,6 @@
-module.exports = class bazMath {
+module.exports = class BazMath {
     constructor() {
-        throw "Don't instantiate static class bazMath."
+        throw "Don't instantiate static class BazMath."
     }
 
     static amplitude(vect) {
