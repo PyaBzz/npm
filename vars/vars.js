@@ -3,8 +3,6 @@ class Vars {
         throw new Error("Do not instantiate a static class");
     }
 
-    static get undef() { }
-
     static isDefined(variable) {
         return !this.isUndefined(variable);
     }
@@ -17,10 +15,9 @@ class Vars {
         return typeof variable === 'function';
     }
 
-    //Todo: Add tests
-    static ifFunctionRun(variable, ...params) {
-        if (isFunction(variable))
-            variable(...params);
+    static ifFunctionRun(variable, ...args) {
+        if (this.isFunction(variable))
+            return variable(...args);
     }
 
     //Todo: Add tests
