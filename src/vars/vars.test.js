@@ -105,4 +105,29 @@ describe('Vars', function () {
             assert.strictEqual(Vars.ifFunctionRun(2), undefined);
         });
     });
+
+    describe('copyProps', function () {
+        it('copies nothing from an empty object', function () {
+            const src = {}, dest = {};
+            Vars.copyProps(src, dest);
+            assert.strictEqual(Object.keys(dest).length, 0);
+        });
+        it('doesn\'t change existing props', function () {
+            const src = { foo: 3 }, dest = { bar: 4 };
+            Vars.copyProps(src, dest);
+            assert.strictEqual(Object.keys(dest).length, 2);
+            assert.strictEqual(dest.bar, 4);
+        });
+        it('copies props', function () {
+            const src = { foo: 3 }, dest = {};
+            Vars.copyProps(src, dest);
+            assert.strictEqual(dest.foo, 3);
+        });
+        it('overwrites matching props', function () {
+            const src = { foo: 3 }, dest = { foo: 4 };
+            Vars.copyProps(src, dest);
+            assert.strictEqual(Object.keys(dest).length, 1);
+            assert.strictEqual(dest.foo, 3);
+        });
+    });
 });

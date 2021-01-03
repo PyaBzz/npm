@@ -20,8 +20,7 @@ class Vars {
             return variable(...args);
     }
 
-    //Todo: Add tests
-    static copyProperties(from, to) {
+    static copyProps(from, to) {
         for (let key in from)
             to[key] = from[key];
     }
