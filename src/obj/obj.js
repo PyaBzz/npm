@@ -17,7 +17,6 @@ class Obj {
         return Object.keys(obj)[i];
     }
 
-    //Todo: Write tests to cover this point downwards
     static deepFreeze(o) {
         const propNames = Object.getOwnPropertyNames(o);
 
@@ -25,10 +24,9 @@ class Obj {
             const value = o[name];
 
             if (value && typeof value === "object") {
-                deepFreeze(value);
+                Obj.deepFreeze(value);
             }
         }
-
         return Object.freeze(o);
     }
 }

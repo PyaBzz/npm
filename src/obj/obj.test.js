@@ -36,12 +36,20 @@ describe('Obj', function () {
             assert.strictEqual(Obj.getPropKeyByIndex(obj, 1), "bar");
         });
         it('complains about missing params', function () {
-            try {
-                Obj.getPropKeyByIndex();
-            }
-            catch (err) {
-                assert.strictEqual(err.message, "Expected number of parameters: 2")
-            }
+            assert.throws(() => Obj.getPropKeyByIndex(), { message: "Expected number of parameters: 2" });
+        });
+    });
+
+    describe('deepFreeze', function () {
+        it('freezes flat object', function () {
+            const obj = { foo: null, bar: null };
+            Obj.deepFreeze(obj);
+            assert.throws(() => obj.foo = 3, { message: /^Cannot assign to read only property/ });
+        });
+        it('freezes deep object', function () {
+            const obj = { foo: { bar: null } };
+            Obj.deepFreeze(obj);
+            assert.throws(() => obj.foo.bar = 3, { message: /^Cannot assign to read only property/ });
         });
     });
 });
