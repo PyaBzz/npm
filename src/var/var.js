@@ -5,22 +5,21 @@ class Var {
         throw new Error("Do not instantiate a static class");
     }
 
-    //Todo: Rename variable to v
-    static isDefined(variable) {
-        return !this.isUndefined(variable);
+    static isDefined(v) {
+        return !this.isUndefined(v);
     }
 
-    static isUndefined(variable) {
-        return typeof variable === 'undefined';
+    static isUndefined(v) {
+        return typeof v === 'undefined';
     }
 
-    static isFunction(variable) {
-        return typeof variable === 'function';
+    static isFunction(v) {
+        return typeof v === 'function';
     }
 
-    static ifFunctionRun(variable, ...args) {
-        if (this.isFunction(variable))
-            return variable(...args);
+    static ifFunctionRun(v, ...args) {
+        if (this.isFunction(v))
+            return v(...args);
     }
 
     static nameOf(objectWrappedVar) {
@@ -30,8 +29,8 @@ class Var {
     }
 
     //Todo: Write tests to cover this point downwards
-    static isObject(variable) {
-        return typeof variable === 'object';
+    static isObject(v) {
+        return typeof v === 'object';
     }
 }
 
