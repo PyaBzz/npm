@@ -114,18 +114,10 @@ describe('Var', function () {
             assert.strictEqual(Var.nameOf({ myVar }), "myVar");
         });
         it('complains about unwrapped variable', function () {
-            try {
-                Var.nameOf(myVar)
-            } catch (err) {
-                assert.strictEqual(err.message, "Parameter must be a variable wrapped in an object");
-            }
+            assert.throws(() => Var.nameOf(myVar), { message: "Parameter must be a variable wrapped in an object" });
         });
         it('complains about missing variable', function () {
-            try {
-                Var.nameOf({})
-            } catch (err) {
-                assert.strictEqual(err.message, "Parameter must be a variable wrapped in an object");
-            }
+            assert.throws(() => Var.nameOf({}), { message: "Parameter must be a variable wrapped in an object" });
         });
     });
 });

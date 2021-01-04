@@ -23,7 +23,9 @@ class Var {
     }
 
     static nameOf(objectWrappedVar) {
-        if (this.isObject(objectWrappedVar) === false)
+        if (this.isObject(objectWrappedVar) === false
+            || Object.keys(objectWrappedVar).length === 0
+        )
             throw new Error("Parameter must be a variable wrapped in an object");
         return Object.keys(objectWrappedVar)[0];
     }
