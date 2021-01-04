@@ -18,18 +18,18 @@ class Obj {
     }
 
     //Todo: Write tests to cover this point downwards
-    static deepFreeze(object) {
-        const propNames = Object.getOwnPropertyNames(object);
+    static deepFreeze(o) {
+        const propNames = Object.getOwnPropertyNames(o);
 
         for (const name of propNames) {
-            const value = object[name];
+            const value = o[name];
 
             if (value && typeof value === "object") {
                 deepFreeze(value);
             }
         }
 
-        return Object.freeze(object);
+        return Object.freeze(o);
     }
 }
 
