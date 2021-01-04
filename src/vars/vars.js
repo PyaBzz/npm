@@ -1,3 +1,5 @@
+"use strict";
+
 class Vars {
     constructor() {
         throw new Error("Do not instantiate a static class");
@@ -25,12 +27,18 @@ class Vars {
             to[key] = from[key];
     }
 
-    //Todo: Add tests
-    static getPropKeyByIndex(obj, i) {
+    static getPropKeyByIndex(...args) {
+        if (args.length !== 2)
+            throw new Error("Expected number of parameters: " + 2)
+        const [obj, i] = args;
         return Object.keys(obj)[i];
     }
 
-    //Todo: Add tests
+    //Todo: Write tests to cover this point downwards
+    static nameOf(objectWrappedVar) {
+        return Object.keys(objectWrappedVar)[0];
+    }
+
     static deepFreeze(object) {
         const propNames = Object.getOwnPropertyNames(object);
 

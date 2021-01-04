@@ -130,4 +130,20 @@ describe('Vars', function () {
             assert.strictEqual(dest.foo, 3);
         });
     });
+
+    describe('getPropKeyByIndex', function () {
+        const obj = { foo: null, bar: null };
+        it('gets property key', function () {
+            assert.strictEqual(Vars.getPropKeyByIndex(obj, 0), "foo");
+            assert.strictEqual(Vars.getPropKeyByIndex(obj, 1), "bar");
+        });
+        it('complains about missing params', function () {
+            try {
+                Vars.getPropKeyByIndex();
+            }
+            catch (err) {
+                assert.strictEqual(err.message, "Expected number of parameters: 2")
+            }
+        });
+    });
 });
