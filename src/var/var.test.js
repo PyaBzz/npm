@@ -107,4 +107,25 @@ describe('Var', function () {
             assert.strictEqual(Var.ifFunctionRun(2), undefined);
         });
     });
+
+    describe('nameOf', function () {
+        let myVar;
+        it('returns correct name', function () {
+            assert.strictEqual(Var.nameOf({ myVar }), "myVar");
+        });
+        it('complains about unwrapped variable', function () {
+            try {
+                Var.nameOf(myVar)
+            } catch (err) {
+                assert.strictEqual(err.message, "Parameter must be a variable wrapped in an object");
+            }
+        });
+        it('complains about missing variable', function () {
+            try {
+                Var.nameOf({})
+            } catch (err) {
+                assert.strictEqual(err.message, "Parameter must be a variable wrapped in an object");
+            }
+        });
+    });
 });
