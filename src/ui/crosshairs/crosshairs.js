@@ -1,3 +1,5 @@
+"use strict";
+
 class Crosshairs {
 	constructor(mouseInAction, mouseOutAction) {
 		const targets = document.getElementsByClassName('ch-target');

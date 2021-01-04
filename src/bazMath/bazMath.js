@@ -1,3 +1,5 @@
+"use strict";
+
 class BazMath {
     constructor() {
         throw "Don't instantiate static class BazMath."

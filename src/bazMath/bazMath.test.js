@@ -1,3 +1,5 @@
+"use strict";
+
 const assert = require("assert");
 const BazMath = require("./bazMath");
 const Random = require("./../random");

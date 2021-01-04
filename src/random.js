@@ -1,3 +1,5 @@
+"use strict";
+
 //Todo: Add tests
 
 class Random {

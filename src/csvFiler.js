@@ -1,3 +1,5 @@
+"use strict";
+
 class CsvFiler {
     constructor() {
         throw new Error("Do not instantiate a static class");

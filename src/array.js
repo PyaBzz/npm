@@ -1,3 +1,5 @@
+"use strict";
+
 Array.prototype.takeFirstOut = function (elementCount = 1) {
     return this.splice(0, elementCount);
 }

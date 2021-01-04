@@ -1,3 +1,5 @@
+"use strict";
+
 class Overlay {
 	#element;
 	#line1;

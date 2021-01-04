@@ -1,3 +1,5 @@
+"use strict";
+
 class Logboard {
 	#table = document.createElement('table');
 
