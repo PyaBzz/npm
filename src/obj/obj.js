@@ -1,25 +1,8 @@
 "use strict";
 
-class Vars {
+class Obj {
     constructor() {
         throw new Error("Do not instantiate a static class");
-    }
-
-    static isDefined(variable) {
-        return !this.isUndefined(variable);
-    }
-
-    static isUndefined(variable) {
-        return typeof variable === 'undefined';
-    }
-
-    static isFunction(variable) {
-        return typeof variable === 'function';
-    }
-
-    static ifFunctionRun(variable, ...args) {
-        if (this.isFunction(variable))
-            return variable(...args);
     }
 
     static copyProps(from, to) {
@@ -35,10 +18,6 @@ class Vars {
     }
 
     //Todo: Write tests to cover this point downwards
-    static nameOf(objectWrappedVar) {
-        return Object.keys(objectWrappedVar)[0];
-    }
-
     static deepFreeze(object) {
         const propNames = Object.getOwnPropertyNames(object);
 
@@ -54,5 +33,5 @@ class Vars {
     }
 }
 
-if (Vars.isDefined(module))
-    module.exports = Vars;
+if (typeof module !== "undefined")
+    module.exports = Obj;
