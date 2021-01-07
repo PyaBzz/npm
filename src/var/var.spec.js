@@ -8,7 +8,7 @@ describe('Var', function () {
         it('returns false from missing parameter', function () {
             assert.strictEqual(Var.isDefined(), false);
         });
-        it('returns false from undefined value', function () {
+        it('returns false from undefined', function () {
             assert.strictEqual(Var.isDefined(undefined), false);
         });
         it('returns true from any ordinary value', function () {
@@ -35,7 +35,7 @@ describe('Var', function () {
         it('returns true from missing parameter', function () {
             assert.strictEqual(Var.isUndefined(), true);
         });
-        it('returns true from undefined value', function () {
+        it('returns true from undefined', function () {
             assert.strictEqual(Var.isUndefined(undefined), true);
         });
         it('returns false from any ordinary value', function () {
@@ -62,7 +62,7 @@ describe('Var', function () {
         it('returns false from missing parameter', function () {
             assert.strictEqual(Var.isFunction(), false);
         });
-        it('returns false from undefined value', function () {
+        it('returns false from undefined', function () {
             assert.strictEqual(Var.isFunction(undefined), false);
         });
         it('returns false from number', function () {
@@ -118,6 +118,36 @@ describe('Var', function () {
         });
         it('complains about missing variable', function () {
             assert.throws(() => Var.nameOf({}), { message: "Parameter must be a variable wrapped in an object" });
+        });
+
+        describe('isObject', function () {
+            it('returns false from missing parameter', function () {
+                assert.strictEqual(Var.isObject(), false);
+            });
+            it('returns false from undefined', function () {
+                assert.strictEqual(Var.isObject(undefined), false);
+            });
+            it('returns false from null', function () {
+                assert.strictEqual(Var.isObject(null), false);
+            });
+            it('returns false from number', function () {
+                assert.strictEqual(Var.isObject(0), false);
+            });
+            it('returns false from boolean', function () {
+                assert.strictEqual(Var.isObject(true), false);
+            });
+            it('returns false from string', function () {
+                assert.strictEqual(Var.isObject(""), false);
+            });
+            it('returns false from function', function () {
+                assert.strictEqual(Var.isObject(() => { }), false);
+            });
+            it('returns false from array', function () {
+                assert.strictEqual(Var.isObject([]), false);
+            });
+            it('returns true from inline object', function () {
+                assert.strictEqual(Var.isObject({}), true);
+            });
         });
     });
 });

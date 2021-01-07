@@ -30,9 +30,16 @@ class Var {
         return Object.keys(objectWrappedVar)[0];
     }
 
-    //Todo: Write tests to cover this point downwards
     static isObject(v) {
-        return typeof v === 'object';
+        if (typeof v === 'object') {
+            if (v instanceof Array)
+                return false;
+            else if (v === null)
+                return false;
+            else
+                return true;
+        } else
+            return false;
     }
 }
 
