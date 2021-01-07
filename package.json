@@ -1,10 +1,10 @@
 {
   "name": "bazjs",
-  "version": "1.0.4",
+  "version": "0.0.4",
   "description": "baz library",
   "main": "",
   "scripts": {
-    "test": "mocha './**/*.test.js'"
+    "test": "mocha './**/*.spec.js'"
   },
   "repository": {
     "type": "git",

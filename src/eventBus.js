@@ -19,7 +19,7 @@ class EventBus {
         return this.#funcs[key].last;
     }
 
-    notify(key, ...args) {
+    notify(key, ...args) { //Todo: Rename to emit
         const funcArray = this.#funcs[key];
         if (!funcArray)
             throw new Error(`No subscription found with key ${key}`);
