@@ -2,7 +2,7 @@
 
 const assert = require("assert");
 const BazMath = require("./bazMath");
-const Random = require("../random");
+const Random = require("./random");
 
 describe('BazMath', function () {
     describe('amplitude', function () {
