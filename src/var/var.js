@@ -36,5 +36,5 @@ class Var {
     }
 }
 
-if (Var.isDefined(module))
+if (typeof module !== "undefined")//Checks if Node enviro
     module.exports = Var;

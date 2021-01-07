@@ -31,5 +31,5 @@ class Obj {
     }
 }
 
-if (typeof module !== "undefined")
+if (typeof module !== "undefined")//Checks if Node enviro
     module.exports = Obj;

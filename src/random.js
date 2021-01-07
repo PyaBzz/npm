@@ -16,5 +16,5 @@ class Random {
     }
 }
 
-if (typeof module !== "undefined")
+if (typeof module !== "undefined")//Checks if Node enviro
     module.exports = Random;

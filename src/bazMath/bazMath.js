@@ -13,5 +13,5 @@ class BazMath {
     static sigmoid(x) { return x / (1 + Math.abs(x)) };
 }
 
-if (typeof module !== "undefined")
+if (typeof module !== "undefined")//Checks if Node enviro
     module.exports = BazMath;
