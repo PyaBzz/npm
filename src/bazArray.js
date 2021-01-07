@@ -6,9 +6,11 @@ class BazArray {
     }
 
     static takeFirstOut(arr, elementCount = 1) {
+        if (elementCount > arr.length)
+            throw new Error("Element count cannot exceed array length");
         return arr.splice(0, elementCount);
     }
-
+    //Todo: Tests to cover this point downwards
     static takeLastOut(arr, elementCount = 1) {
         return arr.splice(-elementCount, elementCount);
     }
@@ -104,4 +106,4 @@ class BazArray {
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro
-    module.exports = BazMath;
+    module.exports = BazArray;
