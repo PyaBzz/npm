@@ -1,7 +1,7 @@
 {
   "name": "bazjs",
   "version": "0.0.4",
-  "description": "baz library",
+  "description": "A library to make development easier and improve code readability.",
   "main": "",
   "scripts": {
     "test": "mocha './**/*.spec.js'"
@@ -13,6 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^8.2.1"
+    "mocha": "8.2.1"
   }
 }
