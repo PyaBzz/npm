@@ -4,32 +4,32 @@ const assert = require("assert");
 const BazMath = require("./bazMath");
 const Random = require("./random");
 
-describe('BazMath', function () {
-    describe('amplitude', function () {
-        it('gets 0 when vector is an empty array', function () {
+describe('BazMath', () => {
+    describe('amplitude', () => {
+        it('gets 0 when vector is an empty array', () => {
             assert.strictEqual(BazMath.amplitude([]), 0);
         });
 
-        it('gets single value in a vector', function () {
+        it('gets single value in a vector', () => {
             assert.strictEqual(BazMath.amplitude([7]), 7);
         });
 
-        it('gets RMS of a normal vector', function () {
+        it('gets RMS of a normal vector', () => {
             assert.strictEqual(BazMath.amplitude([3, 4]), 5);
         });
     });
 
-    describe('sigmoid', function () {
-        it('gets 0 at origin', function () {
+    describe('sigmoid', () => {
+        it('gets 0 at origin', () => {
             assert.strictEqual(BazMath.sigmoid(0), 0);
         });
 
-        it('is symmetric', function () {
+        it('is symmetric', () => {
             const x = Random.getInRange(0.01, 1000);
             assert.strictEqual(BazMath.sigmoid(x), - BazMath.sigmoid(-x));
         });
 
-        it('gets correct value', function () {
+        it('gets correct value', () => {
             assert.strictEqual(BazMath.sigmoid(1), 1 / 2);
         });
     });
