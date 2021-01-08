@@ -26,20 +26,23 @@ class BazArray {
         return arr.slice(fromIndex, toIndex);
     }
 
-    //Todo: Tests to cover this point downwards
     static getTop(arr, getter = el => el, elementCount = 1) {
+        if (elementCount < 1)
+            throw new Error("Invalid number of elements requested: " + elementCount);
+        if (arr.length < elementCount)
+            throw new Error(`Array has ${arr.length} elements which is fewer than ${elementCount} required`);
         if (elementCount === 1) { //Todo: compare if elementCount < log(arr.length) and implement O(n*k)
-            let max = arr.getMax(getter);
-            return { items: [max.item], indexes: [max.index], values: [max.value] };
+            let max = this.getMax(arr, getter);
+            return { items: [max.item], indices: [max.index], values: [max.value] };
         }
-        let temp = [];
-        arr.forEach((e, i, a) => temp[i] = { elem: e, ind: i });
-        this.sortDescending(temp, n => getter(n.elem));
+        const temp = arr.map((e, i, a) => { return { elem: e, ind: i } });
+        this.sortDescend(temp, n => getter(n.elem));
         let top = this.takeFirstOut(temp, elementCount);
-        return { items: top.map(n => n.elem), indexes: top.map(n => n.ind), values: top.map(n => getter(n.elem)) };
+        return { items: top.map(n => n.elem), indices: top.map(n => n.ind), values: top.map(n => getter(n.elem)) };
     }
 
-    static getMax(err, getter = el => el) {
+    //Todo: Tests to cover this point downwards
+    static getMax(arr, getter = el => el) {
         let index = 0;
         let element = arr[index];
         let maxVal = getter(element);
@@ -55,12 +58,12 @@ class BazArray {
         return { item: element, index: index, value: maxVal };
     }
 
-    static sortAscending(valueGetter) {
-        this.sort((a, b) => valueGetter(a) - valueGetter(b));
+    static sortAscend(arr, valueGetter) {
+        arr.sort((a, b) => valueGetter(a) - valueGetter(b));
     }
 
-    static sortDescending(valueGetter) {
-        this.sort((a, b) => valueGetter(b) - valueGetter(a));
+    static sortDescend(arr, valueGetter) {
+        arr.sort((a, b) => valueGetter(b) - valueGetter(a));
     }
 
     static pickRandom(batchSize = 1) {

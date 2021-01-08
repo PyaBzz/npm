@@ -103,4 +103,38 @@ describe('BazArray', () => {
                 assert.strictEqual(res[i], arr[startIndex + i]);
         });
     });
+
+    describe(BazArray.getTop.name, () => {
+        it('complains if elementCount < 1', () => {
+            assert.throws(() => BazArray.getTop([1, 2], x => x, 0), { message: "Invalid number of elements requested: 0" });
+        });
+        it('complains if empty array', () => {
+            assert.throws(() => BazArray.getTop([]), { message: "Array has 0 elements which is fewer than 1 required" });
+        });
+        it('complains if not enough elements', () => {
+            assert.throws(() => BazArray.getTop([1, 2], x => x, 3), { message: "Array has 2 elements which is fewer than 3 required" });
+        });
+        const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: -1 }, { val: 4 }];
+        it('gets max if ungiven element count', () => {
+            const res = BazArray.getTop(arr, x => x.val);
+            assert.strictEqual(res.items.length, 1);
+            assert.deepStrictEqual(res.items[0], { val: 5 });
+            assert.strictEqual(res.indices.length, 1);
+            assert.strictEqual(res.indices[0], 2);
+            assert.strictEqual(res.values.length, 1);
+            assert.strictEqual(res.values[0], 5);
+        });
+        it('gets correct elements', () => {
+            const res = BazArray.getTop(arr, x => x.val, 2);
+            assert.strictEqual(res.items.length, 2);
+            assert.deepStrictEqual(res.items[0], { val: 5 });
+            assert.deepStrictEqual(res.items[1], { val: 4 });
+            assert.strictEqual(res.indices.length, 2);
+            assert.strictEqual(res.indices[0], 2);
+            assert.strictEqual(res.indices[1], 6);
+            assert.strictEqual(res.values.length, 2);
+            assert.strictEqual(res.values[0], 5);
+            assert.strictEqual(res.values[1], 4);
+        });
+    });
 });
