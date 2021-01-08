@@ -10,21 +10,26 @@ class BazArray {
             throw new Error("Element count cannot exceed array length");
         return arr.splice(0, elementCount);
     }
-    //Todo: Tests to cover this point downwards
     static takeLastOut(arr, elementCount = 1) {
+        if (elementCount > arr.length)
+            throw new Error("Element count cannot exceed array length");
         return arr.splice(-elementCount, elementCount);
     }
 
     static addToFront(arr, ...params) {
         for (let i = params.length - 1; i >= 0; i--)
             arr.unshift(params[i]);
+        return arr.length;
     }
 
-    static clone(arr, fromIndex = 0, elementCount) {
-        elementCount = elementCount || arr.length;
-        return arr.slice(fromIndex, elementCount);
+    static clone(arr, fromIndex = 0, toIndex) { //Excluding toIndex
+        // console.log(fromIndex);
+        // console.log(toIndex);
+        // toIndex = toIndex || arr.length - 1;
+        return arr.slice(fromIndex, toIndex);
     }
 
+    //Todo: Tests to cover this point downwards
     static forEachInterval(arr, action, timeStep, callback) {
         if (this.hasNone(arr))
             return;
