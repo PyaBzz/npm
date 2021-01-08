@@ -116,13 +116,8 @@ describe('BazArray', () => {
         });
         const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: -1 }, { val: 4 }];
         it('gets max if ungiven element count', () => {
-            const res = BazArray.getTop(arr, x => x.val);
-            assert.strictEqual(res.items.length, 1);
-            assert.deepStrictEqual(res.items[0], { val: 5 });
-            assert.strictEqual(res.indices.length, 1);
-            assert.strictEqual(res.indices[0], 2);
-            assert.strictEqual(res.values.length, 1);
-            assert.strictEqual(res.values[0], 5);
+            const max = BazArray.getMax(arr, x => x.val);
+            assert.deepStrictEqual(BazArray.getTop(arr, x => x.val), { indices: [max.index], items: [max.item], values: [max.value], });
         });
         it('gets correct elements', () => {
             const res = BazArray.getTop(arr, x => x.val, 2);
@@ -135,6 +130,26 @@ describe('BazArray', () => {
             assert.strictEqual(res.values.length, 2);
             assert.strictEqual(res.values[0], 5);
             assert.strictEqual(res.values[1], 4);
+        });
+    });
+
+    describe(BazArray.getMax.name, () => {
+        it('complains if empty array', () => {
+            assert.throws(() => BazArray.getMax([]), { message: "Array cannot be empty" });
+        })
+        it('gets correct value', () => {
+            const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: -1 }, { val: 4 }];
+            const res = BazArray.getMax(arr, x => x.val);
+            assert.deepStrictEqual(res.item, { val: 5 });
+            assert.strictEqual(res.index, 2);
+            assert.strictEqual(res.value, 5);
+        });
+        it('gets lower index if equal values', () => {
+            const arr = [{ val: 1 }, { val: 1 }];
+            const res = BazArray.getMax(arr, x => x.val);
+            assert.deepStrictEqual(res.item, { val: 1 });
+            assert.strictEqual(res.index, 0);
+            assert.strictEqual(res.value, 1);
         });
     });
 });

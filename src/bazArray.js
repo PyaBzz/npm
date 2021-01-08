@@ -41,8 +41,10 @@ class BazArray {
         return { items: top.map(n => n.elem), indices: top.map(n => n.ind), values: top.map(n => getter(n.elem)) };
     }
 
-    //Todo: Tests to cover this point downwards
     static getMax(arr, getter = el => el) {
+        if (arr.length === 0)
+            throw new Error("Array cannot be empty");
+
         let index = 0;
         let element = arr[index];
         let maxVal = getter(element);
@@ -58,6 +60,7 @@ class BazArray {
         return { item: element, index: index, value: maxVal };
     }
 
+    //Todo: Tests to cover this point downwards
     static sortAscend(arr, valueGetter) {
         arr.sort((a, b) => valueGetter(a) - valueGetter(b));
     }
