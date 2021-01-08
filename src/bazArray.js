@@ -60,15 +60,15 @@ class BazArray {
         return { item: element, index: index, value: maxVal };
     }
 
-    //Todo: Tests to cover this point downwards
     static sortAscend(arr, valueGetter) {
         arr.sort((a, b) => valueGetter(a) - valueGetter(b));
     }
-
+    
     static sortDescend(arr, valueGetter) {
         arr.sort((a, b) => valueGetter(b) - valueGetter(a));
     }
-
+    
+    //Todo: Tests to cover this point downwards
     static pickRandom(batchSize = 1) {
         if (this.hasNone)
             throw new Error("Array is empty!")

@@ -152,4 +152,22 @@ describe('BazArray', () => {
             assert.strictEqual(res.value, 1);
         });
     });
+
+    describe(BazArray.sortAscend.name, () => {
+        it('sorts', () => {
+            const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: 4 }];
+            BazArray.sortAscend(arr, x => x.val);
+            for (let i = 0; i < arr.length; i++)
+                assert.strictEqual(arr[i].val, i);
+        })
+    });
+
+    describe(BazArray.sortDescend.name, () => {
+        it('sorts', () => {
+            const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: 4 }];
+            BazArray.sortDescend(arr, x => x.val);
+            for (let i = 0; i < arr.length; i++)
+                assert.strictEqual(arr[i].val, arr.length - i - 1);
+        })
+    });
 });
