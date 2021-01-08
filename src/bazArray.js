@@ -23,31 +23,10 @@ class BazArray {
     }
 
     static clone(arr, fromIndex = 0, toIndex) { //Excluding toIndex
-        // console.log(fromIndex);
-        // console.log(toIndex);
-        // toIndex = toIndex || arr.length - 1;
         return arr.slice(fromIndex, toIndex);
     }
 
     //Todo: Tests to cover this point downwards
-    static forEachInterval(arr, action, timeStep, callback) {
-        if (this.hasNone(arr))
-            return;
-        let i = 0;
-        let elem = arr[0];
-        action(elem);
-        const loopHandle = setInterval(function () { //Todo: Could add index to callback args
-            i++;
-            if (i < arr.length) {
-                elem = arr[i];
-                action(elem);
-            } else {
-                clearInterval(loopHandle);
-                callback();
-            }
-        }, timeStep);
-    }
-
     static getTop(arr, getter = el => el, elementCount = 1) {
         if (elementCount === 1) { //Todo: compare if elementCount < log(arr.length) and implement O(n*k)
             let max = arr.getMax(getter);
@@ -108,6 +87,24 @@ class BazArray {
     getLast() { return this[this.length - 1] }
     hasAny() { return Boolean(this.length) }
     hasNone() { return Boolean(this.length === 0) }
+
+    static forEachInterval(arr, action, timeStep, callback) {
+        if (this.hasNone(arr))
+            return;
+        let i = 0;
+        let elem = arr[0];
+        action(elem);
+        const loopHandle = setInterval(function () { //Todo: Could add index to callback args
+            i++;
+            if (i < arr.length) {
+                elem = arr[i];
+                action(elem);
+            } else {
+                clearInterval(loopHandle);
+                callback();
+            }
+        }, timeStep);
+    }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro

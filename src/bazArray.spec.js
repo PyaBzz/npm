@@ -93,8 +93,6 @@ describe('BazArray', function () {
             const toIndex = 1;
             const res = BazArray.clone(arr, startIndex, toIndex);
             assert.strictEqual(res.length, 0);
-            // for (let i = 0; i <= res.length; i++)
-            //     assert.strictEqual(res[i], arr[startIndex + i]);
         });
         it('gets correct elements', function () {
             const startIndex = 1;
