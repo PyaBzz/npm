@@ -4,7 +4,7 @@ const assert = require("assert");
 const BazArray = require("./bazArray");
 
 describe('BazArray', () => {
-    describe('takeFirstOut', () => {
+    describe(BazArray.takeFirstOut.name, () => {
         it('complains if not enough elements', () => {
             const arr = [];
             assert.throws(() => BazArray.takeFirstOut(arr, 1), { message: "Element count cannot exceed array length" });
@@ -27,7 +27,7 @@ describe('BazArray', () => {
         });
     });
 
-    describe('takeLastOut', () => {
+    describe(BazArray.takeLastOut.name, () => {
         it('complains if not enough elements', () => {
             const arr = [];
             assert.throws(() => BazArray.takeLastOut(arr, 1), { message: "Element count cannot exceed array length" });
@@ -50,7 +50,7 @@ describe('BazArray', () => {
         });
     });
 
-    describe('addToFront', () => {
+    describe(BazArray.addToFront.name, () => {
         const arr = [4, 5, 6];
         it('leaves array untouched if no params', () => {
             const res = BazArray.addToFront(arr);
@@ -69,7 +69,7 @@ describe('BazArray', () => {
         });
     });
 
-    describe('clone', () => {
+    describe(BazArray.clone.name, () => {
         const arr = [1, 2, 3];
         it('leaves array untouched', () => {
             const res = BazArray.clone(arr);

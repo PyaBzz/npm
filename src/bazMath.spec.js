@@ -5,7 +5,7 @@ const BazMath = require("./bazMath");
 const Random = require("./random");
 
 describe('BazMath', () => {
-    describe('amplitude', () => {
+    describe(BazMath.amplitude.name, () => {
         it('gets 0 when vector is an empty array', () => {
             assert.strictEqual(BazMath.amplitude([]), 0);
         });
@@ -19,7 +19,7 @@ describe('BazMath', () => {
         });
     });
 
-    describe('sigmoid', () => {
+    describe(BazMath.sigmoid.name, () => {
         it('gets 0 at origin', () => {
             assert.strictEqual(BazMath.sigmoid(0), 0);
         });

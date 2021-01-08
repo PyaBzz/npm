@@ -4,7 +4,7 @@ const assert = require("assert");
 const Var = require("./var");
 
 describe('Var', () => {
-    describe('isDefined', () => {
+    describe(Var.isDefined.name, () => {
         it('gets false from missing parameter', () => {
             assert.strictEqual(Var.isDefined(), false);
         });
@@ -31,7 +31,7 @@ describe('Var', () => {
         });
     });
 
-    describe('isUndefined', () => {
+    describe(Var.isUndefined.name, () => {
         it('gets true from missing parameter', () => {
             assert.strictEqual(Var.isUndefined(), true);
         });
@@ -58,7 +58,7 @@ describe('Var', () => {
         });
     });
 
-    describe('isFunction', () => {
+    describe(Var.isFunction.name, () => {
         it('gets false from missing parameter', () => {
             assert.strictEqual(Var.isFunction(), false);
         });
@@ -85,7 +85,7 @@ describe('Var', () => {
         });
     });
 
-    describe('ifFunctionRun', () => {
+    describe(Var.ifFunctionRun.name, () => {
         it('gets value from inline func', () => {
             assert.strictEqual(Var.ifFunctionRun(() => { return 2 }), 2);
         });
@@ -108,7 +108,7 @@ describe('Var', () => {
         });
     });
 
-    describe('nameOf', () => {
+    describe(Var.nameOf.name, () => {
         let myVar;
         it('gets correct name', () => {
             assert.strictEqual(Var.nameOf({ myVar }), "myVar");
@@ -119,35 +119,35 @@ describe('Var', () => {
         it('complains if missing variable', () => {
             assert.throws(() => Var.nameOf({}), { message: "Parameter must be a variable wrapped in an object" });
         });
+    });
 
-        describe('isObject', () => {
-            it('gets false from missing parameter', () => {
-                assert.strictEqual(Var.isObject(), false);
-            });
-            it('gets false from undefined', () => {
-                assert.strictEqual(Var.isObject(undefined), false);
-            });
-            it('gets false from null', () => {
-                assert.strictEqual(Var.isObject(null), false);
-            });
-            it('gets false from number', () => {
-                assert.strictEqual(Var.isObject(0), false);
-            });
-            it('gets false from boolean', () => {
-                assert.strictEqual(Var.isObject(true), false);
-            });
-            it('gets false from string', () => {
-                assert.strictEqual(Var.isObject(""), false);
-            });
-            it('gets false from function', () => {
-                assert.strictEqual(Var.isObject(() => { }), false);
-            });
-            it('gets false from array', () => {
-                assert.strictEqual(Var.isObject([]), false);
-            });
-            it('gets true from inline object', () => {
-                assert.strictEqual(Var.isObject({}), true);
-            });
+    describe(Var.isObject.name, () => {
+        it('gets false from missing parameter', () => {
+            assert.strictEqual(Var.isObject(), false);
+        });
+        it('gets false from undefined', () => {
+            assert.strictEqual(Var.isObject(undefined), false);
+        });
+        it('gets false from null', () => {
+            assert.strictEqual(Var.isObject(null), false);
+        });
+        it('gets false from number', () => {
+            assert.strictEqual(Var.isObject(0), false);
+        });
+        it('gets false from boolean', () => {
+            assert.strictEqual(Var.isObject(true), false);
+        });
+        it('gets false from string', () => {
+            assert.strictEqual(Var.isObject(""), false);
+        });
+        it('gets false from function', () => {
+            assert.strictEqual(Var.isObject(() => { }), false);
+        });
+        it('gets false from array', () => {
+            assert.strictEqual(Var.isObject([]), false);
+        });
+        it('gets true from inline object', () => {
+            assert.strictEqual(Var.isObject({}), true);
         });
     });
 });

@@ -4,7 +4,7 @@ const assert = require("assert");
 const Obj = require("./obj");
 
 describe('Obj', () => {
-    describe('copyProps', () => {
+    describe(Obj.copyProps.name, () => {
         it('copies nothing from an empty object', () => {
             const src = {}, dest = {};
             Obj.copyProps(src, dest);
@@ -29,7 +29,7 @@ describe('Obj', () => {
         });
     });
 
-    describe('getPropKeyByIndex', () => {
+    describe(Obj.getPropKeyByIndex.name, () => {
         const obj = { foo: null, bar: null };
         it('gets property key', () => {
             assert.strictEqual(Obj.getPropKeyByIndex(obj, 0), "foo");
@@ -40,7 +40,7 @@ describe('Obj', () => {
         });
     });
 
-    describe('deepFreeze', () => {
+    describe(Obj.deepFreeze.name, () => {
         it('freezes flat object', () => {
             const obj = { foo: null, bar: null };
             Obj.deepFreeze(obj);
