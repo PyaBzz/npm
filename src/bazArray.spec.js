@@ -268,10 +268,28 @@ describe('BazArray', () => {
     });
 
     describe(BazArray.forEachInterval.name, () => {
-        it('ignores empty array');
-        it('iterates correct number of times');
-        it('calls action with correct args');
-        it('calls callback');
+        it('ignores empty array', () => {
+            let check = false;
+            BazArray.forEachInterval([], () => check = true, 1, () => assert.strictEqual(check, false));
+        });
+        it('iterates correct number of times', () => {
+            let check = 0;
+            BazArray.forEachInterval([1, 2, 3], () => check, 1, () => assert.strictEqual(check, 0));
+        });
+        it('calls action with correct args', () => {
+            let indexSum = 0;
+            let valueSum = 0;
+            BazArray.forEachInterval([1, 2, 3],
+                (val, i) => {
+                    indexSum += i;
+                    valueSum += val
+                },
+                1,
+                () => {
+                    assert.strictEqual(indexSum, 3);
+                    assert.strictEqual(valueSum, 6);
+                });
+        });
     });
 
     describe(BazArray.hasAll.name, () => {
