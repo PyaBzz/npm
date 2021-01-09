@@ -274,7 +274,7 @@ describe('BazArray', () => {
         it('calls callback');
     });
 
-    describe(BazArray.contains.name, () => {
+    describe(BazArray.hasAll.name, () => {
         it('works with empty arrays');
         it('gets correct value');
     });

@@ -126,7 +126,7 @@ class BazArray {
         }, timeStep);
     }
 
-    static contains(arr, subArr) { return subArr.every(x => arr.includes(x)) }
+    static hasAll(arr, subArr) { return subArr.every(x => arr.includes(x)) }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro
