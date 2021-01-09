@@ -189,4 +189,31 @@ describe('BazArray', () => {
             assert.strictEqual(res.indices.length, batchSize);
         });
     });
+
+    describe(BazArray.hasNone.name, () => {
+        it('gets true if empty array', () => {
+            assert.strictEqual(BazArray.hasNone([]), true);
+        });
+        it('gets false if non-empty array', () => {
+            assert.strictEqual(BazArray.hasNone([null]), false);
+        });
+    });
+
+    describe(BazArray.hasAny.name, () => {
+        it('gets false if empty array', () => {
+            assert.strictEqual(BazArray.hasAny([]), false);
+        });
+        it('gets true if non-empty array', () => {
+            assert.strictEqual(BazArray.hasAny([null]), true);
+        });
+    });
+
+    describe(BazArray.getLast.name, () => {
+        it('nags if empty array', () => {
+            assert.throws(() => BazArray.getLast([]), { message: "Array cannot be empty" });
+        });
+        it('gets last item', () => {
+            assert.strictEqual(BazArray.getLast([1, 2, 3, 4]), 4);
+        });
+    });
 });

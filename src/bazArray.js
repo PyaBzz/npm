@@ -68,7 +68,6 @@ class BazArray {
         arr.sort((a, b) => valueGetter(b) - valueGetter(a));
     }
 
-    //Todo: Tests to cover this point downwards
     static pickRandom(arr, batchSize = 1) {
         if (this.hasNone(arr))
             throw new Error("Array cannot be empty")
@@ -87,16 +86,23 @@ class BazArray {
         }
     }
 
+    static hasNone(arr) { return Boolean(arr.length === 0) }
+
+    static hasAny(arr) { return Boolean(arr.length) }
+
+    static getLast(arr) {
+        if (this.hasNone(arr))
+            throw new Error("Array cannot be empty");
+        return arr[arr.length - 1]
+    }
+
+    //Todo: Tests to cover this point downwards
     static shuffle(batchSize = 1) {
         for (let i = 1; i < this.length; i++) {
             let ind = Random.getInt(0, i - 1);
             [this[i], this[ind]] = [this[ind], this[i]];
         }
     }
-
-    getLast() { return this[this.length - 1] }
-    hasAny() { return Boolean(this.length) }
-    static hasNone(arr) { return Boolean(arr.length === 0) }
 
     static forEachInterval(arr, action, timeStep, callback) {
         if (this.hasNone(arr))
