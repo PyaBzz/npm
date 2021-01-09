@@ -241,5 +241,29 @@ describe('BazArray', () => {
             BazArray.shuffle(arr);
             assert.strictEqual(arr.every(item => clone.includes(item)), true);
         });
+        it('evenly distributes probability', () => {
+            const arr = [0, 1, 2];
+            const count = [];
+            for (let pos = 0; pos < arr.length; pos++) {
+                count[pos] = new Array(arr.length).fill(0);
+            }
+
+            for (let c = 1; c <= 1000000; c++) {
+                for (let i = 0; i < arr.length; i++) {
+                    const val = arr[i];
+                    const col = count[i];
+                    col[val]++;
+                }
+                BazArray.shuffle(arr);
+            }
+            for (let row = 0; row < arr.length; row++) {
+                let rowText = "";
+                for (let col = 0; col < arr.length; col++) {
+                    //Todo: implement Var.isInProximity(centreNumber, variance) and assert using that
+                    rowText += count[col][row] + ", ";
+                }
+                console.log(rowText);
+            }
+        });
     });
 });
