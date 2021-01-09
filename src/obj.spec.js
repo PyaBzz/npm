@@ -35,7 +35,7 @@ describe('Obj', () => {
             assert.strictEqual(Obj.getPropKeyByIndex(obj, 0), "foo");
             assert.strictEqual(Obj.getPropKeyByIndex(obj, 1), "bar");
         });
-        it('complains if missing params', () => {
+        it('nags if missing params', () => {
             assert.throws(() => Obj.getPropKeyByIndex(), { message: "Expected number of parameters: 2" });
         });
     });

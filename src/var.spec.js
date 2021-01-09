@@ -113,10 +113,10 @@ describe('Var', () => {
         it('gets correct name', () => {
             assert.strictEqual(Var.nameOf({ myVar }), "myVar");
         });
-        it('complains if unwrapped variable', () => {
+        it('nags if unwrapped variable', () => {
             assert.throws(() => Var.nameOf(myVar), { message: "Parameter must be a variable wrapped in an object" });
         });
-        it('complains if missing variable', () => {
+        it('nags if missing variable', () => {
             assert.throws(() => Var.nameOf({}), { message: "Parameter must be a variable wrapped in an object" });
         });
     });

@@ -5,7 +5,7 @@ const BazArray = require("./bazArray");
 
 describe('BazArray', () => {
     describe(BazArray.takeFirstOut.name, () => {
-        it('complains if not enough elements', () => {
+        it('nags if not enough elements', () => {
             const arr = [];
             assert.throws(() => BazArray.takeFirstOut(arr, 1), { message: "Element count cannot exceed array length" });
         });
@@ -28,7 +28,7 @@ describe('BazArray', () => {
     });
 
     describe(BazArray.takeLastOut.name, () => {
-        it('complains if not enough elements', () => {
+        it('nags if not enough elements', () => {
             const arr = [];
             assert.throws(() => BazArray.takeLastOut(arr, 1), { message: "Element count cannot exceed array length" });
         });
@@ -105,13 +105,13 @@ describe('BazArray', () => {
     });
 
     describe(BazArray.getTop.name, () => {
-        it('complains if elementCount < 1', () => {
+        it('nags if elementCount < 1', () => {
             assert.throws(() => BazArray.getTop([1, 2], x => x, 0), { message: "Invalid number of elements requested: 0" });
         });
-        it('complains if empty array', () => {
+        it('nags if empty array', () => {
             assert.throws(() => BazArray.getTop([]), { message: "Array has 0 elements which is fewer than 1 required" });
         });
-        it('complains if not enough elements', () => {
+        it('nags if not enough elements', () => {
             assert.throws(() => BazArray.getTop([1, 2], x => x, 3), { message: "Array has 2 elements which is fewer than 3 required" });
         });
         const arr = [{ val: 1 }, { val: 3 }, { val: 5 }, { val: 2 }, { val: 0 }, { val: -1 }, { val: 4 }];
@@ -134,7 +134,7 @@ describe('BazArray', () => {
     });
 
     describe(BazArray.getMax.name, () => {
-        it('complains if empty array', () => {
+        it('nags if empty array', () => {
             assert.throws(() => BazArray.getMax([]), { message: "Array cannot be empty" });
         })
         it('gets correct value', () => {
@@ -170,15 +170,15 @@ describe('BazArray', () => {
                 assert.strictEqual(arr[i].val, arr.length - i - 1);
         });
     });
-    //Todo: Replace 'complains' with 'nags' everywhere
+
     describe(BazArray.pickRandom.name, () => {
-        it('complains if empty array', () => {
+        it('nags if empty array', () => {
             assert.throws(() => BazArray.pickRandom([]), { message: "Array cannot be empty" });
         });
-        it('complains if batchSize < 1', () => {
+        it('nags if batchSize < 1', () => {
             assert.throws(() => BazArray.pickRandom([1], 0), { message: "Batch size of 0 must be at least 1" });
         });
-        it('complains if batchSize > array length', () => {
+        it('nags if batchSize > array length', () => {
             assert.throws(() => BazArray.pickRandom([1], 2), { message: "Array has 1 elements which is fewer than 2 required" });
         });
         it('gets correct number of items', () => {
