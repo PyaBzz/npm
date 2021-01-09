@@ -113,12 +113,12 @@ class BazArray {
             return;
         let i = 0;
         let elem = arr[0];
-        action(elem);
-        const loopHandle = setInterval(function () { //Todo: Could add index to callback args
+        action(elem, i, arr);
+        const loopHandle = setInterval(function () {
             i++;
             if (i < arr.length) {
                 elem = arr[i];
-                action(elem);
+                action(elem, i, arr);
             } else {
                 clearInterval(loopHandle);
                 callback();

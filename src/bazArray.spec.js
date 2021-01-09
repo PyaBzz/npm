@@ -266,4 +266,16 @@ describe('BazArray', () => {
             }
         });
     });
+
+    describe(BazArray.forEachInterval.name, () => {
+        it('ignores empty array');
+        it('iterates correct number of times');
+        it('calls action with correct args');
+        it('calls callback');
+    });
+
+    describe(BazArray.contains.name, () => {
+        it('works with empty arrays');
+        it('gets correct value');
+    });
 });
