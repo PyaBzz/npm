@@ -63,23 +63,27 @@ class BazArray {
     static sortAscend(arr, valueGetter) {
         arr.sort((a, b) => valueGetter(a) - valueGetter(b));
     }
-    
+
     static sortDescend(arr, valueGetter) {
         arr.sort((a, b) => valueGetter(b) - valueGetter(a));
     }
-    
+
     //Todo: Tests to cover this point downwards
-    static pickRandom(batchSize = 1) {
-        if (this.hasNone)
-            throw new Error("Array is empty!")
+    static pickRandom(arr, batchSize = 1) {
+        if (this.hasNone(arr))
+            throw new Error("Array cannot be empty")
+        if (batchSize < 1)
+            throw new Error(`Batch size of ${batchSize} must be at least 1`);
+        if (arr.length < batchSize)
+            throw new Error(`Array has ${arr.length} elements which is fewer than ${batchSize} required`);
         if (batchSize === 1) {
-            let randomIndex = Math.floor(Math.random() * this.length);
-            return this[randomIndex];
+            let randomIndex = Math.floor(Math.random() * arr.length);
+            return { items: [arr[randomIndex]], indices: [randomIndex] };
         }
         else {
-            let clone = this.clone();
-            clone.shuffle();
-            return clone.slice(0, batchSize);
+            let temp = arr.map((e, i, a) => { return { elem: e, ind: i } });
+            temp = this.takeFirstOut(temp, batchSize);
+            return { items: temp.map(x => x.elem), indices: temp.map(x => x.ind) };
         }
     }
 
@@ -92,7 +96,7 @@ class BazArray {
 
     getLast() { return this[this.length - 1] }
     hasAny() { return Boolean(this.length) }
-    hasNone() { return Boolean(this.length === 0) }
+    static hasNone(arr) { return Boolean(arr.length === 0) }
 
     static forEachInterval(arr, action, timeStep, callback) {
         if (this.hasNone(arr))

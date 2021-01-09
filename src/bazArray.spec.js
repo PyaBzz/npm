@@ -159,7 +159,7 @@ describe('BazArray', () => {
             BazArray.sortAscend(arr, x => x.val);
             for (let i = 0; i < arr.length; i++)
                 assert.strictEqual(arr[i].val, i);
-        })
+        });
     });
 
     describe(BazArray.sortDescend.name, () => {
@@ -168,6 +168,25 @@ describe('BazArray', () => {
             BazArray.sortDescend(arr, x => x.val);
             for (let i = 0; i < arr.length; i++)
                 assert.strictEqual(arr[i].val, arr.length - i - 1);
-        })
+        });
+    });
+    //Todo: Replace 'complains' with 'nags' everywhere
+    describe(BazArray.pickRandom.name, () => {
+        it('complains if empty array', () => {
+            assert.throws(() => BazArray.pickRandom([]), { message: "Array cannot be empty" });
+        });
+        it('complains if batchSize < 1', () => {
+            assert.throws(() => BazArray.pickRandom([1], 0), { message: "Batch size of 0 must be at least 1" });
+        });
+        it('complains if batchSize > array length', () => {
+            assert.throws(() => BazArray.pickRandom([1], 2), { message: "Array has 1 elements which is fewer than 2 required" });
+        });
+        it('gets correct number of items', () => {
+            const batchSize = 2;
+            const arr = [1, 2, 3, 4, 5];
+            const res = BazArray.pickRandom(arr, batchSize);
+            assert.strictEqual(res.items.length, batchSize);
+            assert.strictEqual(res.indices.length, batchSize);
+        });
     });
 });
