@@ -14,7 +14,7 @@ describe('BazArray', () => {
             const res = BazArray.takeFirstOut(arr, 0);
             assert.strictEqual(res.length, 0);
         });
-        it('leaves array untouched if count is 0', () => {
+        it('preserves array if count is 0', () => {
             assert.strictEqual(arr.length, 3);
         });
         it('gets first element as array', () => {
@@ -37,7 +37,7 @@ describe('BazArray', () => {
             const res = BazArray.takeLastOut(arr, 0);
             assert.strictEqual(res.length, 0);
         });
-        it('leaves array untouched if count is 0', () => {
+        it('preserves array if count is 0', () => {
             assert.strictEqual(arr.length, 3);
         });
         it('gets first element as array', () => {
@@ -52,7 +52,7 @@ describe('BazArray', () => {
 
     describe(BazArray.addToFront.name, () => {
         const arr = [4, 5, 6];
-        it('leaves array untouched if no params', () => {
+        it('preserves array if no params', () => {
             const res = BazArray.addToFront(arr);
             assert.strictEqual(res, 3);
             assert.strictEqual(arr.length, 3);
@@ -71,7 +71,7 @@ describe('BazArray', () => {
 
     describe(BazArray.clone.name, () => {
         const arr = [1, 2, 3];
-        it('leaves array untouched', () => {
+        it('preserves array', () => {
             const res = BazArray.clone(arr);
             assert.strictEqual(arr.length, 3);
         });
@@ -214,6 +214,32 @@ describe('BazArray', () => {
         });
         it('gets last item', () => {
             assert.strictEqual(BazArray.getLast([1, 2, 3, 4]), 4);
+        });
+    });
+
+    describe(BazArray.shuffle.name, () => {
+        it('does nothing to empty array', () => {
+            const arr = [];
+            BazArray.shuffle(arr);
+            assert.strictEqual(arr.length, 0);
+        });
+        it('does nothing to single-element array', () => {
+            const arr = [7];
+            BazArray.shuffle(arr);
+            assert.strictEqual(arr.length, 1);
+            assert.strictEqual(arr[0], 7);
+        });
+        it('preserves array length', () => {
+            const arr = [1, 2, 3];
+            const len = arr.length;
+            BazArray.shuffle(arr);
+            assert.strictEqual(arr.length, len);
+        });
+        it('preserves items', () => {
+            const arr = [1, 2, 3];
+            const clone = BazArray.clone(arr);
+            BazArray.shuffle(arr);
+            assert.strictEqual(arr.every(item => clone.includes(item)), true);
         });
     });
 });

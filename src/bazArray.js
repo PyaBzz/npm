@@ -1,5 +1,7 @@
 "use strict";
 
+const Random = require("./random");
+
 class BazArray {
     constructor() {
         throw "Don't instantiate static class BazMath."
@@ -96,14 +98,16 @@ class BazArray {
         return arr[arr.length - 1]
     }
 
-    //Todo: Tests to cover this point downwards
-    static shuffle(batchSize = 1) {
-        for (let i = 1; i < this.length; i++) {
-            let ind = Random.getInt(0, i - 1);
-            [this[i], this[ind]] = [this[ind], this[i]];
+    static shuffle(arr) {
+        if (arr.length <= 1)
+            return;
+        for (let i = 1; i < arr.length; i++) {
+            let ind = Random.getInt(0, i);
+            [arr[i], arr[ind]] = [arr[ind], arr[i]];
         }
     }
 
+    //Todo: Tests to cover this point downwards
     static forEachInterval(arr, action, timeStep, callback) {
         if (this.hasNone(arr))
             return;
@@ -121,6 +125,8 @@ class BazArray {
             }
         }, timeStep);
     }
+
+    static contains(arr, subArr) { throw "implement" }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro
