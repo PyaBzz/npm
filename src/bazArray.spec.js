@@ -2,6 +2,7 @@
 
 const assert = require("assert");
 const BazArray = require("./bazArray");
+const Num = require("./num");
 
 describe('BazArray', () => {
     describe(BazArray.takeFirstOut.name, () => {
@@ -248,7 +249,8 @@ describe('BazArray', () => {
                 count[pos] = new Array(arr.length).fill(0);
             }
 
-            for (let c = 1; c <= 1000000; c++) {
+            const rounds = 10000;
+            for (let c = 1; c <= rounds; c++) {
                 for (let i = 0; i < arr.length; i++) {
                     const val = arr[i];
                     const col = count[i];
@@ -259,8 +261,9 @@ describe('BazArray', () => {
             for (let row = 0; row < arr.length; row++) {
                 let rowText = "";
                 for (let col = 0; col < arr.length; col++) {
-                    //Todo: implement Var.isInProximity(centreNumber, variance) and assert using that
-                    rowText += count[col][row] + ", ";
+                    const val = count[col][row];
+                    assert.strictEqual(Num.approximates(val, rounds / arr.length, rounds / 100), true);
+                    rowText += val + ", ";
                 }
                 console.log(rowText);
             }
