@@ -302,4 +302,29 @@ describe('BazArray', () => {
             assert.strictEqual(BazArray.hasAll([1], [1, 2]), false);
         });
     });
+
+    describe(BazArray.of.name, () => {
+        const val = 2;
+        const len = 3;
+        const arr = BazArray.of(val, len);
+        it('gets correct value', () => {
+            assert.strictEqual(arr.every(x => x === val), true);
+        });
+        it('gets correct length', () => {
+            assert.strictEqual(arr.length, len);
+        });
+    });
+
+    describe(BazArray.range.name, () => {
+        const start = 7;
+        const len = 5;
+        const arr = BazArray.range(start, len);
+        it('gets correct values', () => {
+            // console.log(arr);
+            assert.strictEqual(arr.every((x, i, arr) => x === start + i), true);
+        });
+        it('gets correct length', () => {
+            assert.strictEqual(arr.length, len);
+        });
+    });
 });

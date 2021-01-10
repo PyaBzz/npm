@@ -130,12 +130,9 @@ class BazArray {
         }, timeStep);
     }
 
-    //Todo: Test this func
-    static range(start, len) { return Array.from({ length: len }, (v, i) => start + i) }
+    static of(val, len) { return new Array(len).fill(val) }
 
-    //Todo: Test this func
-    //Todo: Could we use: new Array(len).fill(val)
-    static of(val, len) { return Array.from({ length: len }, (v, i) => val) }
+    static range(start, len) { return Array.from({ length: len }, (v, i) => start + i) }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro
