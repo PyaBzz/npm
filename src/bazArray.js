@@ -71,7 +71,7 @@ class BazArray {
         arr.sort((a, b) => valueGetter(b) - valueGetter(a));
     }
 
-    //Todo: Should move to Random?
+    //Should move to Random?
     static pickRandom(arr, batchSize = 1) {
         if (this.hasNone(arr))
             throw new Error("Array cannot be empty")
@@ -102,7 +102,7 @@ class BazArray {
         return arr[arr.length - 1]
     }
 
-    //Todo: Should move to Random?
+    //Should move to Random?
     static shuffle(arr) {
         if (arr.length <= 1)
             return;
