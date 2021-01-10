@@ -129,6 +129,12 @@ class BazArray {
             }
         }, timeStep);
     }
+
+    //Todo: Test this func
+    static range(start, len) { return Array.from({ length: len }, (v, i) => start + i) }
+
+    //Todo: Test this func
+    static of(val, len) { return Array.from({ length: len }, (v, i) => val) }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro

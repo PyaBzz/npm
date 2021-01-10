@@ -25,7 +25,7 @@ describe('BazMath', () => {
         });
 
         it('is symmetric', () => {
-            const x = Random.getInRange(0.01, 1000);
+            const x = Random.getNumber(0.01, 1000);
             assert.strictEqual(BazMath.sigmoid(x), - BazMath.sigmoid(-x));
         });
 
