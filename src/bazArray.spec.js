@@ -262,7 +262,7 @@ describe('BazArray', () => {
                 let rowText = "";
                 for (let col = 0; col < arr.length; col++) {
                     const val = count[col][row];
-                    assert.strictEqual(Num.approximates(val, rounds / arr.length, rounds / 100), true);
+                    assert.strictEqual(Num.approximates(val, rounds / arr.length, rounds * 0.2), true);
                     rowText += val + ", ";
                 }
                 console.log(rowText);
