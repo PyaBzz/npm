@@ -1,4 +1,5 @@
 "use strict";
+const isNode = typeof module !== "undefined";
 
 class Random {
     constructor() {
@@ -14,5 +15,5 @@ class Random {
     }
 }
 
-if (typeof module !== "undefined")//Checks if Node enviro
+if (isNode)
     module.exports = Random;

@@ -21,9 +21,9 @@ class Crosshairs {
 			cornerBottomRight.classList.add('ch-corners', 'ch-corner-bottom-right');
 			item.appendChild(cornerBottomRight);
 
-			if (isFunction(mouseInAction))
+			if (Var.isFunction(mouseInAction))
 				item.onmouseenter = () => mouseInAction();
-			if (isFunction(mouseOutAction))
+			if (Var.isFunction(mouseOutAction))
 				item.onmouseleave = () => mouseOutAction();
 		});
 	}

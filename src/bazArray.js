@@ -1,9 +1,9 @@
 "use strict";
-
-if (typeof module !== "undefined")//Checks if Node enviro
-    var Random = require("./random");
+const isNode = typeof module !== "undefined";
+const Rnd = isNode ? require("./random") : Random;
 
 class BazArray {
+
     constructor() {
         throw "Don't instantiate static class BazMath."
     }
@@ -107,7 +107,7 @@ class BazArray {
         if (arr.length <= 1)
             return;
         for (let i = 1; i < arr.length; i++) {
-            let ind = Random.getInt(0, i);
+            let ind = Rnd.getInt(0, i);
             [arr[i], arr[ind]] = [arr[ind], arr[i]];
         }
     }
@@ -135,5 +135,5 @@ class BazArray {
     static range(start, len) { return Array.from({ length: len }, (v, i) => start + i) }
 }
 
-if (typeof module !== "undefined")//Checks if Node enviro
+if (isNode)
     module.exports = BazArray;

@@ -1,4 +1,5 @@
 "use strict";
+const isNode = typeof module !== "undefined";
 
 class Obj {
     constructor() {
@@ -31,5 +32,5 @@ class Obj {
     }
 }
 
-if (typeof module !== "undefined")//Checks if Node enviro
+if (isNode)
     module.exports = Obj;
