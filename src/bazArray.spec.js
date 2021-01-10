@@ -244,28 +244,24 @@ describe('BazArray', () => {
         });
         it('evenly distributes probability', () => {
             const arr = [0, 1, 2];
-            const count = [];
+            const counts = [];
             for (let pos = 0; pos < arr.length; pos++) {
-                count[pos] = new Array(arr.length).fill(0);
+                counts[pos] = new Array(arr.length).fill(0);
             }
 
             const rounds = 10000;
-            for (let c = 1; c <= rounds; c++) {
-                for (let i = 0; i < arr.length; i++) {
-                    const val = arr[i];
-                    const col = count[i];
+            for (let i = 1; i <= rounds; i++) {
+                for (let position = 0; position < arr.length; position++) {
+                    const val = arr[position];
+                    const col = counts[position];
                     col[val]++;
                 }
                 BazArray.shuffle(arr);
             }
-            for (let row = 0; row < arr.length; row++) {
-                let rowText = "";
-                for (let col = 0; col < arr.length; col++) {
-                    const val = count[col][row];
-                    assert.strictEqual(Num.approximates(val, rounds / arr.length, rounds * 0.2), true);
-                    rowText += val + ", ";
-                }
-                console.log(rowText);
+            for (let position = 0; position < arr.length; position++) {
+                const col = counts[position];
+                assert.strictEqual(col.every(val => Num.approximates(val, rounds / arr.length, rounds * 0.2)), true);
+                console.log(col);
             }
         });
     });
