@@ -16,7 +16,7 @@ class EventBus {
         if (!this.#funcs[key])
             this.#funcs[key] = [];
         this.#funcs[key].push(func);
-        return this.#funcs[key].last;
+        return BazArray.getLast(this.#funcs[key]);
     }
 
     notify(key, ...args) { //Todo: Rename to emit
@@ -24,7 +24,7 @@ class EventBus {
         if (!funcArray)
             throw new Error(`No subscription found with key ${key}`);
         for (let listenerFunc of funcArray)
-            ifFunctionRun(listenerFunc, ...args);
+            listenerFunc(...args);
     }
 
     unsubscribe(key, listenerRef) {
