@@ -296,7 +296,14 @@ describe('BazArray', () => {
     });
 
     describe(BazArray.hasAll.name, () => {
-        it('works with empty arrays');
-        it('gets correct value');
+        it('works with empty arrays', () => {
+            assert.strictEqual(BazArray.hasAll([], []), true);
+        });
+        it('gets correct value if true', () => {
+            assert.strictEqual(BazArray.hasAll([1, 2], [2]), true);
+        });
+        it('gets correct value if false', () => {
+            assert.strictEqual(BazArray.hasAll([1], [1, 2]), false);
+        });
     });
 });

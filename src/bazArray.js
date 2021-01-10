@@ -94,6 +94,8 @@ class BazArray {
 
     static hasAny(arr) { return Boolean(arr.length) }
 
+    static hasAll(arr, subArr) { return subArr.every(x => arr.includes(x)) }
+
     static getLast(arr) {
         if (this.hasNone(arr))
             throw new Error("Array cannot be empty");
@@ -110,7 +112,6 @@ class BazArray {
         }
     }
 
-    //Todo: Tests to cover this point downwards
     static forEachInterval(arr, action, timeStep, callback) {
         if (this.hasNone(arr))
             return;
@@ -128,8 +129,6 @@ class BazArray {
             }
         }, timeStep);
     }
-
-    static hasAll(arr, subArr) { return subArr.every(x => arr.includes(x)) }
 }
 
 if (typeof module !== "undefined")//Checks if Node enviro
