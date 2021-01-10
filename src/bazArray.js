@@ -1,6 +1,6 @@
 "use strict";
-const isNode = typeof module !== "undefined";
-const Rnd = isNode ? require("./random") : Random;
+
+const Rnd = typeof module !== "undefined" ? require("./random") : Random;
 
 class BazArray {
 
@@ -135,5 +135,5 @@ class BazArray {
     static range(start, len) { return Array.from({ length: len }, (v, i) => start + i) }
 }
 
-if (isNode)
+if (typeof module !== "undefined")
     module.exports = BazArray;

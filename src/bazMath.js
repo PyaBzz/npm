@@ -1,5 +1,4 @@
 "use strict";
-const isNode = typeof module !== "undefined";
 
 class BazMath {
     constructor() {
@@ -14,5 +13,5 @@ class BazMath {
     static sigmoid(x) { return x / (1 + Math.abs(x)) };
 }
 
-if (isNode)
+if (typeof module !== "undefined")
     module.exports = BazMath;

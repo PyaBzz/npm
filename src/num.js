@@ -1,5 +1,4 @@
 "use strict";
-const isNode = typeof module !== "undefined";
 
 class Num {
     constructor() {
@@ -12,5 +11,5 @@ class Num {
     }
 }
 
-if (isNode)
+if (typeof module !== "undefined")
     module.exports = Num;

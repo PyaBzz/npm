@@ -1,5 +1,4 @@
 "use strict";
-const isNode = typeof module !== "undefined";
 
 class Var {
     constructor() {
@@ -44,5 +43,5 @@ class Var {
     }
 }
 
-if (isNode)
+if (typeof module !== "undefined")
     module.exports = Var;
