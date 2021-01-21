@@ -13,7 +13,10 @@ class MultiFuncButton {
 
     bind(label) {
         let me = this;
-        this.#element.onmousedown = () => me.#funcs[label]();
+        const func = me.#funcs[label];
+        if (!func)
+            throw new Error(`No function found with key ${label}`);
+        this.#element.onmousedown = () => func();
         this.#element.innerText = label;
     }
 } 
